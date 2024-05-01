@@ -3,8 +3,6 @@ package view;
 import controllers.FuncionariosController;
 import models.*;
 
-//Testar matrícula ja existem emcadastro de funcionário
-
 public class Sistema {
     public static String nome;
     public static int matricula;
@@ -96,6 +94,9 @@ public class Sistema {
 
         System.out.println("\nCadastro de Gerente:\n");
         cadastrarEfetivo();
+
+        if (matriculaExiste()) {return;}
+
         System.out.print("Bonus Anual: ");
         bonusAnual = Console.lerFloat();
         System.out.print("Time Gerenciado: ");
@@ -113,6 +114,9 @@ public class Sistema {
 
         System.out.println("\nCadastro de Desenvolvedor:\n");
         cadastrarEfetivo();
+
+        if (matriculaExiste()) {return;}
+
         System.out.print("Tecnologia: ");
         tecnologia = Console.lerString();
         System.out.print("Senioridade: ");
@@ -132,6 +136,9 @@ public class Sistema {
 
         System.out.println("\nCadastro de Estagiário:\n");
         cadastrarFuncionario();
+
+        if (matriculaExiste()) {return;}
+
         System.out.print("Horas de estágio: ");
         horasEstagio = Console.lerInt();
         System.out.print("Curso: ");
@@ -189,10 +196,11 @@ public class Sistema {
 
     private static void listarGerentes() {
         if (FuncionariosController.listarGerentes().isEmpty()) {
-            System.out.println("Não há gerentes cadastrados!");
+            System.out.println("\nNão há gerentes cadastrados!");
             return;
         }
         for (Funcionario temp: FuncionariosController.listarGerentes()) {
+            System.out.println("");
             System.out.println(temp);
         }
     }
@@ -203,6 +211,7 @@ public class Sistema {
             return;
         }
         for (Funcionario temp: FuncionariosController.listarDesenvolvedores()) {
+            System.out.println("");
             System.out.println(temp);
         }
     }
@@ -213,17 +222,27 @@ public class Sistema {
             return;
         }
         for (Funcionario temp: FuncionariosController.listarEstagiarios()) {
+            System.out.println("");
             System.out.println(temp);
         }
     }
 
     private static void listarFuncionarios() {
         if (FuncionariosController.getFuncionarios().isEmpty()) {
-            System.out.println("Não há funcionários cadastrados!");
+            System.out.println("\nNão há funcionários cadastrados!");
             return;
         }
         for (Funcionario temp: FuncionariosController.getFuncionarios()) {
+            System.out.println("");
             System.out.println(temp);
         }
+    }
+
+    private static boolean matriculaExiste() {
+        if (FuncionariosController.buscaFuncionario(matricula) == null) {
+            return false;
+        }
+        System.out.println("Funcionário matrícula '" + matricula + "' já cadastrado!");
+        return true;
     }
 }
