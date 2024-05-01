@@ -31,6 +31,8 @@ public class Sistema {
         System.out.println("7 - Listar Desenvolvedores");
         System.out.println("8 - Listar Estagiários");
         System.out.println("9 - Listar Funcionários");
+        System.out.println("10 - Funcionário Trabalhando");
+        System.out.println("11 - Relatórios de Progresso");
         System.out.println("0 - Encerrar");
         System.out.print("Opção: ");
     }
@@ -63,6 +65,12 @@ public class Sistema {
                 break;
             case 9:
                 listarFuncionarios();
+                break;
+            case 10:
+                trabalhar();
+                break;
+            case 11:
+                relatarProgresso();
                 break;
             case 0:
                 break;
@@ -244,5 +252,29 @@ public class Sistema {
         }
         System.out.println("Funcionário matrícula '" + matricula + "' já cadastrado!");
         return true;
+    }
+
+    private static void trabalhar() {
+        if (FuncionariosController.getFuncionarios().isEmpty()) {
+            System.out.println("\nNão há funcionários cadastrados");
+            return;
+        }
+
+        for (Funcionario funcionario: FuncionariosController.getFuncionarios()) {
+            System.out.println("\n" + funcionario.getNome() + ": ");
+            System.out.println(funcionario.trabalhar());
+        }
+    }
+
+    private static void relatarProgresso() {
+        if (FuncionariosController.getFuncionarios().isEmpty()) {
+            System.out.println("\nNão há funcionários cadastrados");
+            return;
+        }
+
+        for (Funcionario funcionario: FuncionariosController.getFuncionarios()) {
+            System.out.println("\n" + funcionario.getNome() + ": ");
+            System.out.println(funcionario.relatarProgresso());
+        }
     }
 }

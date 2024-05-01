@@ -1,8 +1,8 @@
 package models;
 
-import controllers.Trabalhavel;
+//Interface 'Trabalhavel' implementada na Superclasse abstrata 'Funcionario'
 
-public class Gerente extends Efetivo implements Trabalhavel {
+public class Gerente extends Efetivo{
 
     private Float bonusAnual;
     private String time;

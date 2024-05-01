@@ -1,8 +1,8 @@
 package models;
 
-import controllers.Trabalhavel;
+//Interface 'Trabalhavel' implementada na Superclasse abstrata 'Funcionario'
 
-public class Estagiario extends Funcionario implements Trabalhavel{
+public class Estagiario extends Funcionario{
 
     private int horasEstagio;
     private String curso;

@@ -1,6 +1,13 @@
 package models;
 
-public abstract class Funcionario {
+import controllers.Trabalhavel;
+
+//Optei por chamar a interface 'Trabalhável' na superclasse pois todas as subclasses implementarão a função
+
+//Essa abordagem foi necessária para poder chamar os métodos 'trabalhar'e 'relatarProgresso' dentro de loops
+//forEach com o tipo (Funcionario)
+
+public abstract class Funcionario implements Trabalhavel {
 
     private String nome;
     private int matricula;

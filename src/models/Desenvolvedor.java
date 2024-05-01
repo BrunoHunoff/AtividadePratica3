@@ -1,8 +1,8 @@
 package models;
 
-import controllers.Trabalhavel;
+//Interface 'Trabalhavel' implementada na Superclasse abstrata 'Funcionario'
 
-public class Desenvolvedor extends Efetivo implements Trabalhavel {
+public class Desenvolvedor extends Efetivo{
 
     private String tecnologia;
     private String senioridade;
